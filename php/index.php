@@ -89,10 +89,10 @@
             });
         }
 
-        // Fetch books when the page loads
+        
         fetchBooks();
 
-        // Handle form submission for adding a new book
+        
         $('#addBookForm').on('submit', function(e) {
             e.preventDefault();
 
@@ -109,7 +109,7 @@
                     if (data.success) {
                         alert(data.success);
                         $('#addBookForm')[0].reset();
-                        fetchBooks(); // Refresh the book list
+                        fetchBooks(); 
                     } else {
                         alert(data.error);
                     }
@@ -120,7 +120,6 @@
             });
         });
 
-        // Handle Edit button click
         $(document).on('click', '.editBook', function() {
             var bookId = $(this).data('id');
             var author = $(this).data('author');
@@ -135,7 +134,7 @@
             $('#editModal').show();
         });
 
-        // Handle Edit form submission
+        
         $('#editBookForm').on('submit', function(e) {
             e.preventDefault();
 
@@ -164,12 +163,12 @@
             });
         });
 
-        // Close the modal
+        
         $('#closeModal').on('click', function() {
             $('#editModal').hide();
         });
 
-        // Handle Delete button click
+        
         $(document).on('click', '.deleteBook', function() {
             var bookId = $(this).data('id');
 
@@ -182,7 +181,7 @@
                         var data = JSON.parse(response);
                         if (data.success) {
                             alert(data.success);
-                            fetchBooks(); // Refresh the book list
+                            fetchBooks(); 
                         } else {
                             alert(data.error);
                         }

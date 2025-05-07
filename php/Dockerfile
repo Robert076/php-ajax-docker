@@ -1,4 +1,4 @@
-# Stage 1: Build stage
+
 FROM php:8.1-apache AS builder
 
 RUN apt-get update && apt-get install -y \
@@ -10,7 +10,7 @@ RUN a2enmod rewrite
 
 COPY . /var/www/html/
 
-# Stage 2: Production stage
+
 FROM php:8.1-apache AS production
 
 RUN apt-get update && apt-get install -y libmariadb-dev \

@@ -1,6 +1,6 @@
-// updateBook.php
+
 <?php
-// Database credentials
+
 $host = 'db';  
 $username = getenv('MYSQL_USER');
 $password = getenv('MYSQL_PASSWORD');
