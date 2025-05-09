@@ -1,20 +1,31 @@
-version: '3.8'
+version: "3.8"
 
 services:
   php:
     build:
-      context: ./php  
+      context: ./php
     ports:
-      - "8080:80"    
+      - "8080:80"
     volumes:
-      - ./php:/var/www/html  
+      - ./php:/var/www/html
     depends_on:
-      - db 
+      - db
     environment:
       MYSQL_USER: ${MYSQL_USER}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
       MYSQL_DATABASE: ${MYSQL_DATABASE}
       MYSQL_HOST: db
+
+  angular:
+    build:
+      context: ./angular
+    ports:
+      - "4200:80"
+    volumes:
+      - ./angular:/app
+      - /app/node_modules
+    depends_on:
+      - php
 
   db:
     image: mysql:8
@@ -24,9 +35,9 @@ services:
       MYSQL_USER: ${MYSQL_USER}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
     volumes:
-      - db_data:/var/lib/mysql  
+      - db_data:/var/lib/mysql
       - ./mysql/init.sql:/docker-entrypoint-initdb.d/init.sql
-  
+
 volumes:
   db_data:
-    driver: local 
+    driver: local

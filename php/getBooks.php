@@ -1,4 +1,5 @@
 <?php
+require_once 'headers.php';
 
 $host = 'db';
 $username = getenv('MYSQL_USER');
